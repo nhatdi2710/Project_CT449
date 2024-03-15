@@ -1,0 +1,25 @@
+{
+  "name": "bookstore",
+  "version": "1.0.0",
+  "description": "project of ct449",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nhatdi2710/Project_CT449.git"
+  },
+  "keywords": [
+    "nodejs",
+    "vuejs",
+    "express",
+    "books"
+  ],
+  "author": "idn03",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nhatdi2710/Project_CT449/issues"
+  },
+  "homepage": "https://github.com/nhatdi2710/Project_CT449#readme"
+}
