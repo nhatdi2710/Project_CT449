@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/nhatdi2710/Project_CT449#readme",
   "dependencies": {
-    "express": "^4.18.3"
+    "express": "^4.19.2"
   }
 }
