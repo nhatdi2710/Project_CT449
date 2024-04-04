@@ -23,6 +23,13 @@
   },
   "homepage": "https://github.com/nhatdi2710/Project_CT449#readme",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "mongoose": "^8.3.0"
+  },
+  "script": {
+    "start": "nodemon server.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
   }
 }
