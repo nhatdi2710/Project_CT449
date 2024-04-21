@@ -1,13 +1,15 @@
 const express = require('express');
 const db = require('./Libra/config/db/db_connect');
+const MongoDB = require("./Libra/utils/mongodb.utils");
 const app = require('./app');
 
 const PORT = 3000;
 
-function startServer() {
+async function startServer() {
     try {
         // Connect to MongoDB -> ct449-db
-        db.connect();
+        await MongoDB.connect(db.connect.uri);
+        console.log("Connected to the Database!");
 
         // Go to / and Run on PORT: 3000
         app.listen(PORT, () => {

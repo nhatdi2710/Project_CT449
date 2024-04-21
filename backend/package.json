@@ -24,6 +24,7 @@
   "homepage": "https://github.com/nhatdi2710/Project_CT449#readme",
   "dependencies": {
     "express": "^4.19.2",
+    "mongodb": "^6.5.0",
     "mongoose": "^8.3.0"
   },
   "script": {

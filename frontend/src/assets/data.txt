@@ -1,0 +1,46 @@
+[
+    {
+        "_id": "66200117250a4e1527c6a166",
+        "tacgia": "William Defeau",
+        "soquyen": 20,
+        "dongia": 35000,
+        "muon": 0,
+        "manxb": "ND",
+        "masach": "S001",
+        "namxuatban": 2007,
+        "tensach": "Hoang Tu Be"
+    },
+    {
+        "_id": "6620015c250a4e1527c6a192",
+        "soquyen": 8,
+        "tacgia": "Saito Kimetsuji",
+        "muon": 0,
+        "tensach": "Su im lang cua bay cuu",
+        "manxb": "KD",
+        "namxuatban": 1996,
+        "masach": "S002",
+        "dongia": 149000
+    },
+    {
+        "_id": "66213377692634c3a71b9d84",
+        "dongia": 59000,
+        "manxb": "KD",
+        "namxuatban": 1996,
+        "tacgia": "Ernest Cline",
+        "tensach": "Ready Player One",
+        "soquyen": 10,
+        "muon": 0,
+        "masach": "S003"
+    },
+    {
+        "_id": "662133ad692634c3a71b9d91",
+        "soquyen": 10,
+        "tacgia": "Frank Herbert",
+        "tensach": "Dune",
+        "manxb": "T",
+        "namxuatban": 2012,
+        "dongia": 59000,
+        "masach": "S004",
+        "muon": 0
+    }
+]

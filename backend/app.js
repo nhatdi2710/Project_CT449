@@ -1,5 +1,7 @@
 const express = require("express");
 const APIError = require("./Libra/config/app-error");
+const adminRouter = require("./Libra/routes/admin.route");
+const userRouter = require("./Libra/routes/user.route");
 
 const app = express();
 
@@ -12,6 +14,11 @@ app.get("/", (req, res) => {
     });
 });
 
+// Route to Admin Site
+app.use("/admin", adminRouter);
+
+// Route to User Site
+app.use("/api/user", userRouter);
 
 // Control Error: 404 and 500
 app.use((req, res, next) => {
