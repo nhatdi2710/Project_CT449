@@ -28,17 +28,3 @@ npm run dev
 npm run build
 ```
 
--- NOTE:
-
-Base:
-    Chỉnh AppHeader
-
-User:
-    Danh sách sách đang đc mượn
-    Gửi yêu cầu mượn
-
-Admin:
-    Xem ds người dùng
-    Xem thêm sửa xóa sách
-    Xem thêm sửa xóa nhà xuất bản
-    Xử lý mượn

@@ -20,53 +20,48 @@
         <InputSearch v-model="searchText" />
     </div>
     
-    <div class="mt-4 all-book">
-        <h2>Sách Trên Kệ</h2>
-        <BookTable 
-            v-if="filteredBooksCount > 0"
-            :books="filteredBooks"
-            v-model:activeIndex="activeIndex"
+    <div class="mt-4">
+        <h2>Tất Cả Nhà Xuất Bản</h2>
+        <PCTable 
+            v-if="filteredPCsCount > 0"
+            :pcs="filteredPCs"
         />
 
-        <p v-else>Không có quyển sách nào.</p>
+        <p v-else>Không có nhà xuất bản nào.</p>
 
         <div class="mt-4 row">
             <button class="btn btn-secondary col-1" @click="refreshList()">
                 <i class="fas fa-redo"></i> Làm mới
             </button>
 
-            <button class="btn btn--customize col-1" @click="goToAddBook">
+            <button class="btn btn--customize col-1" @click="goToAddPC">
                 <i class="fa-solid fa-plus"></i> Thêm
             </button>
 
-            <button class="btn btn-warning col-1" @click="goToEditBook">
+            <button class="btn btn-warning col-1" @click="goToEditPC">
                 <i class="fa-solid fa-pen"></i> Sửa
             </button>
 
-            <button class="btn btn-danger col-1" @click="removeAllBooks">
+            <button class="btn btn-danger col-1" @click="removeAllPCs">
                 <i class="fa-solid fa-trash"></i> Xóa hết
             </button>
         </div>
-    </div>
-
-    <div class="mt-4">
-        <h2>Sách Đang Được Mượn</h2>
     </div>
 </template>
 
 <script>
     import AdminService from "@/services/admin.service";
     import InputSearch from "@/components/InputSearch.vue";
-    import BookTable from "@/components/BookTable.vue";
+    import PCTable from "@/components/PCTable.vue";
 
     export default {
         components: {
             InputSearch,
-            BookTable
+            PCTable
         },
         data() {
             return {
-                books: [],
+                pcs: [],
                 activeIndex: -1,
                 searchText: "",
             };
@@ -79,59 +74,51 @@
             },
         },
         computed: {
-            bookStrings() {
-                return this.books.map((book) => {
-                    const { tensach, tacgia, dongia, soquyen, namxuatban, manxb} = book;
-                    return [tensach, tacgia, dongia, soquyen, namxuatban, manxb].join("");
+            pcStrings() {
+                return this.pcs.map((pc) => {
+                    const {manxb, tennxb, diachi} = pc;
+                    return [manxb, tennxb, diachi].join("");
                 });
             },
-            filteredBooks() {
+            filteredPCs() {
                 if (!this.searchText) 
-                    return this.books;
+                    return this.pcs;
 
-                return this.books.filter((_book, index) =>
-                    this.bookStrings[index].includes(this.searchText)
+                return this.pcs.filter((_pc, index) =>
+                    this.pcStrings[index].includes(this.searchText)
                 );
             },
-            activeBook() {
-                if (this.activeIndex < 0) 
-                    return null;
-
-                return this.filteredBooks[this.activeIndex];
-            },
-            filteredBooksCount() {
-                return this.filteredBooks.length;
+            filteredPCsCount() {
+                return this.filteredPCs.length;
             },
         },
         methods: {
-            async retrieveBooks() {
+            async retrievePCs() {
                 try {
-                    this.books = await AdminService.getAllBooks();
+                    this.pcs = await AdminService.getAllPCs();
                 } catch (error) {
                     console.log(error);
                 }
             },
             refreshList() {
-                this.retrieveBooks();
+                this.retrievePCs();
                 this.activeIndex = -1;
             },
-            async removeAllBooks() {
-                if (confirm("Bạn muốn xóa tất cả sách?")) {
+            async removeAllPCs() {
+                if (confirm("Bạn muốn xóa tất cả nhà xuất bản?")) {
                     try {
-                        await AdminService.deleteAllBooks();
+                        await AdminService.deleteAllPCs();
                         this.refreshList();
                     } catch (error) {
                         console.log(error);
                     }
                 }
             },
-            goToAddBook() {
-                this.$router.push({ name: "book.add" });
+            goToAddPC() {
+                this.$router.push({ name: "pcomp.add" });
             },
-            goToEditBook() {
-                const sachchon = document.querySelector('input[name="sachchon"]:checked');
-
-                this.$router.push({ name: "book.edit", params: { id: sachchon.value } });
+            goToEditPC() {
+                this.$router.push({ name: "pcomp.edit" });
             },
         },
         mounted() {

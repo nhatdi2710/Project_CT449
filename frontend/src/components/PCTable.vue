@@ -14,46 +14,38 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Tên Sách - Tác Giả</th>
-                <th class="text-center">Giá</th>
-                <th class="text-center">SL</th>
-                <th class="text-center">Năm Xuất Bản</th>
-                <th class="text-center">Nhà Xuất Bản</th>
+                <th class="text-center">Mã NXB</th>
+                <th>Tên NXB</th>
+                <th>Địa Chỉ</th>
                 <th class="text-center">Chọn</th>
             </tr>
         </thead>
 
         <tbody>
             <tr 
-                v-for="(book, index) in books"
-                :key="book._id"
+                v-for="(pc, index) in pcs"
+                :key="pc._id"
                 :class="{ active: index === activeIndex }"
                 @click="updateActiveIndex(index)"
             >
-                <td>{{ book.tensach }} - {{ book.tacgia }}</td>
-                <td class="text-center">{{ book.dongia }}</td>
-                <td class="text-center">{{ book.soquyen }}</td>
-                <td class="text-center">{{ book.namxuatban }}</td>
-                <td class="text-center">{{ book.manxb }}</td>
-                <td class="text-center"><input class="form-check-input check-all" type="checkbox" name="sachchon" v-bind:value="book._id"></td>
+                <td class="text-center">{{ pc.manxb }}</td>
+                <td>{{ pc.tennxb }}</td>
+                <td>{{ pc.diachi }}</td>
+                <td class="text-center"><input class="form-check-input check-all" type="checkbox" name="nxbchon" v-model="pc._id"></td>
             </tr>
         </tbody>
     </table>
         
-    <div class="tools"><p @click="selectAll"><b>Chọn tất cả</b></p> | <p @click="removeAll">Bỏ chọn</p></div>
+    <div class="tools" v-if="$route.path == '/admin/pcomp'"><p @click="selectAll"><b>Chọn tất cả</b></p> | <p @click="removeAll">Bỏ chọn</p></div>
 </template>
 
 <script>
 export default {
     props: {
-        books: { type: Array, default: [] },
+        pcs: { type: Array, default: [] },
         activeIndex: { type: Number, default: -1 },
     },
-    emits: ["update:activeIndex"],
     methods: {
-        updateActiveIndex(index) {
-            this.$emit("update:activeIndex", index);
-        },
         selectAll() {
             const selected = "check-all";
             for (var i = 0; i < document.getElementsByClassName(selected).length; i++) {

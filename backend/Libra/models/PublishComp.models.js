@@ -2,7 +2,7 @@ const { ObjectId } = require("mongodb");
 
 class ManagePublishCompModel {
     constructor (client) {
-        this.nxbDB = client.db().collection("nxb");
+        this.nxbDB = client.db().collection("nhaxuatban");
     }
     
     extractPCData(payload) {

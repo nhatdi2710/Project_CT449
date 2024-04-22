@@ -9,6 +9,9 @@ import LibraMuon from "@/views/UserPages/LibraMuon.vue";
 // Admin
 import LibraAdmin from "@/views/AdminPages/LibraAdmin.vue";
 import LibraAdminBook from "@/views/AdminPages/LibraAdmin.book.vue";
+import LibraAddBook from "@/views/AdminPages/LibraAddBook.vue";
+import LibraAdminPcomp from "@/views/AdminPages/LibraAdmin.pcomp.vue";
+import LibraEditBook from "@/views/AdminPages/LibraEditBook.vue";
 
 import { type } from "jquery";
 
@@ -28,6 +31,7 @@ const routes = [
         component: LibraMuon
     },
     // ADMIN PAGES
+        // Book
     {
         path: "/admin",
         name: "indexadmin",
@@ -40,6 +44,31 @@ const routes = [
         type: "nhanvien",
         component: LibraAdminBook
     },
+    {
+        path: "/admin/book/add",
+        name: "book.add",
+        type: "nhanvien",
+        component: LibraAddBook
+    },
+    {
+        path: "/admin/book/:id",
+        name: "book.edit",
+        type: "nhanvien",
+        component: LibraEditBook
+    },
+        // Publishing Company
+    {
+        path: "/admin/pcomp",
+        name: "pcompadmin",
+        type: "nhanvien",
+        component: LibraAdminPcomp
+    },
+    // {
+    //     path: "/admin/pcomp/add",
+    //     name: "pcomp.add",
+    //     type: "nhanvien",
+    //     component: LibraAddPcomp
+    // },
     // LOGIN PAGE
     {
         path: "/login",

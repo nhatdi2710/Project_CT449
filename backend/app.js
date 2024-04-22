@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 });
 
 // Route to Admin Site
-app.use("/admin", adminRouter);
+app.use("/api/admin", adminRouter);
 
 // Route to User Site
 app.use("/api/user", userRouter);

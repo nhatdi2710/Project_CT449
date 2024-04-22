@@ -41,7 +41,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Quản lý Nhà Xuất Bản</h5>
                     <p class="card-text">Bạn có thể thực thiện các thao tác như: Thêm nhà xuất bản, Sửa nhà xuất bản, Xóa nhà xuất bản tại đây.</p>
-                    <a href="/admin/pc" class="btn btn--customize">Đến trang</a>
+                    <a href="/admin/pcomp" class="btn btn--customize">Đến trang</a>
                 </div>
             </div>
         </div>

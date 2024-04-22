@@ -8,9 +8,10 @@ const router = express.Router();
 // Manage Books
 router.route("/book")
     .get(adminController.showAllBook)
-    .post(adminController.createBook)
     .delete(adminController.deleteAllBook)
 ;
+
+router.route("/book/add").post(adminController.createBook);
 
 router.route("/book/:id")
     .get(adminController.findOneBook)
