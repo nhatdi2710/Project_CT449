@@ -18,8 +18,8 @@
 <template>
     <header id="header" class="d-flex">
         <div class="nav">
-            <img height="32px" src="./../assets/imgs/book.png" alt="">
-            <a v-bind:href="indexHref">Trang chủ</a>
+            <img height="32px" src="./../assets/imgs/book.png" alt="" class="me-4">
+            <a v-bind:href="indexHref" class="me-4">Trang chủ</a>
             <a v-bind:href="loanHref">Mượn sách</a>
         </div>
 

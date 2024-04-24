@@ -5,6 +5,11 @@ class AdminService {
     constructor(baseUrl = "/api/admin") {
         this.api = createApiClient(baseUrl);
     } 
+
+    // User Management
+    async getAllUsers() {
+        return (await this.api.get("/")).data;
+    } 
     
     // Book Management
     async getAllBooks() {
@@ -49,11 +54,11 @@ class AdminService {
     } 
 
     async updatePC(id, data) {
-        return (await this.api.put(`/${id}`, data)).data;
+        return (await this.api.put(`/pcomp/${id}`, data)).data;
     } 
 
     async deletePC(id) {
-        return (await this.api.delete(`/${id}`)).data;
+        return (await this.api.delete(`/pcomp/${id}`)).data;
     }
 } 
 

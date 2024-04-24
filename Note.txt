@@ -1,15 +1,10 @@
 -- NOTE:
 
 User:
-    Danh sách sách đang đc mượn
     Gửi yêu cầu mượn
+    Danh sách sách đang đc mượn
 
 Admin:
-    (
-        Xem ds người dùng
-        Sửa xóa sách
-        Thêm sửa xóa nhà xuất bản
-    ) Tối nay
     Xử lý mượn
     
 [

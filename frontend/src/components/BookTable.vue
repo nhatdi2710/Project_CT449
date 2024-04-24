@@ -19,7 +19,7 @@
                 <th class="text-center">SL</th>
                 <th class="text-center">Năm Xuất Bản</th>
                 <th class="text-center">Nhà Xuất Bản</th>
-                <th class="text-center">Chọn</th>
+                <th class="text-center" v-if="this.$route.path.split('/')[2] != 'muonsach'">Chọn</th>
             </tr>
         </thead>
 
@@ -35,12 +35,12 @@
                 <td class="text-center">{{ book.soquyen }}</td>
                 <td class="text-center">{{ book.namxuatban }}</td>
                 <td class="text-center">{{ book.manxb }}</td>
-                <td class="text-center"><input class="form-check-input check-all" type="checkbox" name="sachchon" v-bind:value="book._id"></td>
+                <td class="text-center" v-if="this.$route.path.split('/')[2] != 'muonsach'"><input class="form-check-input check-all" type="checkbox" name="sachchon" v-bind:value="book._id"></td>
             </tr>
         </tbody>
     </table>
         
-    <div class="tools"><p @click="selectAll"><b>Chọn tất cả</b></p> | <p @click="removeAll">Bỏ chọn</p></div>
+    <div class="tools" v-if="this.$route.path.split('/')[2] != 'muonsach'"><p @click="selectAll"><b>Chọn tất cả</b></p> | <p @click="removeAll">Bỏ chọn</p></div>
 </template>
 
 <script>

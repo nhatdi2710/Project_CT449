@@ -37,6 +37,12 @@ class ManageBookModel {
         return await cursor.toArray();
     }
 
+    async showWithId(id) {
+        const filter = { _id: ObjectId.isValid(id) ? new ObjectId(id) : null };
+        const documents = await this.SachDB.find(filter);
+        return documents.toArray();
+    }
+
     async findById(id) {
         return await this.SachDB.findOne({
             _id: ObjectId.isValid(id) ? new ObjectId(id) : null,

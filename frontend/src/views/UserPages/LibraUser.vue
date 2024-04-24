@@ -35,7 +35,7 @@
                 <i class="fas fa-redo"></i> Làm mới
             </button>
 
-            <button class="btn btn--customize col-1">
+            <button class="btn btn--customize col-1" @click="gotoMuon()">
                 Mượn
             </button>
         </div>
@@ -107,6 +107,10 @@
                 this.retrieveBooks();
                 this.activeIndex = -1;
             },
+            gotoMuon() {
+                const sachchon = document.querySelector('input[name="sachchon"]:checked');
+                this.$router.push({ name: "muonpagewid", params: { id: sachchon.value } });
+            }
         },
         mounted() {
             this.refreshList();

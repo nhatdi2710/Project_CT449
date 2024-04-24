@@ -9,38 +9,38 @@
 
 <template>
     <div class="d-flex form-page">
-        <div v-if="book">
-            <h4>Thêm Sách Mới</h4>
+        <div v-if="pc">
+            <h4>Thêm Nhà Xuất Bản Mới</h4>
 
-            <BookForm
-            :book="book"
-            @submit:book="addBook"
+            <PCForm
+            :pc="pc"
+            @submit:pc="addPC"
             />
 
-            <p>{{ message }}</p>
+            <p>{{ message }} <a v-if="message != ''" href="/admin/pcomp">Quay lại trang Quản Lý NXB</a></p>
         </div>
     </div>
 </template>
 
 <script>
-    import BookForm from "@/components/BookForm.vue";
+    import PCForm from "@/components/PCForm.vue";
     import adminService from "@/services/admin.service";
 
     export default {
         components: {
-            BookForm,
+            PCForm,
         },
         data() {
             return {
-                book: { type: Object, required: true },
+                pc: { type: Object, required: true },
                 message: "",
             };
         },
         methods: {
-            async addBook(data) {
+            async addPC(data) {
                 try {
-                    await adminService.createBook(data);
-                    this.message = "Sách đã được thêm.";
+                    await adminService.createPC(data);
+                    this.message = "Nhà Xuất Bản đã được thêm.";
                 } catch (error) {
                     console.log(error);
                 }

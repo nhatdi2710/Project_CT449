@@ -5,6 +5,9 @@ const router = express.Router();
 
 // router.route("/login").post(adminController.login);
 
+// Manage Users
+router.route("/").get(adminController.showAllUsers);
+
 // Manage Books
 router.route("/book")
     .get(adminController.showAllBook)
@@ -22,9 +25,10 @@ router.route("/book/:id")
 // Manage Publishing Comp
 router.route("/pcomp")
     .get(adminController.showAllPC)
-    .post(adminController.createPC)
     .delete(adminController.deleteAllPC)
 ;
+
+router.route("/pcomp/add").post(adminController.createPC);
 
 router.route("/pcomp/:id")
     .get(adminController.findOnePC)

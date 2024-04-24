@@ -38,7 +38,7 @@ exports.showAllBook = async (req, res, next) => {
 exports.findOneBook = async (req, res, next) => {
     try {
         const manageBookModel = new ManageBookModel(MongoDB.client);
-        const document = await manageBookModel.findById(req.params.id);
+        const document = await manageBookModel.showWithId(req.params.id);
 
         if (!document) {
             return next(new APIError(404, "Book not found"));

@@ -118,7 +118,8 @@
                 this.$router.push({ name: "pcomp.add" });
             },
             goToEditPC() {
-                this.$router.push({ name: "pcomp.edit" });
+                const nxbchon = document.querySelector('input[name="nxbchon"]:checked');
+                this.$router.push({ name: "pcomp.edit", params: { id: nxbchon.value } });
             },
         },
         mounted() {

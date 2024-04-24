@@ -12,8 +12,10 @@ import LibraAdminBook from "@/views/AdminPages/LibraAdmin.book.vue";
 import LibraAddBook from "@/views/AdminPages/LibraAddBook.vue";
 import LibraAdminPcomp from "@/views/AdminPages/LibraAdmin.pcomp.vue";
 import LibraEditBook from "@/views/AdminPages/LibraEditBook.vue";
+import LibraXLMuon from "@/views/AdminPages/LibraAdmin.loan.vue";
 
-import { type } from "jquery";
+import LibraAddPcomp from "@/views/AdminPages/LibraAddPcomp.vue";
+import LibraEditPcomp from "@/views/AdminPages/LibraEditPcomp.vue";
 
 
 const routes = [
@@ -27,6 +29,12 @@ const routes = [
     {
         path: "/user/muonsach",
         name: "muonpage",
+        type: "docgia",
+        component: LibraMuon
+    },
+    {
+        path: "/user/muonsach/:id",
+        name: "muonpagewid",
         type: "docgia",
         component: LibraMuon
     },
@@ -63,12 +71,25 @@ const routes = [
         type: "nhanvien",
         component: LibraAdminPcomp
     },
-    // {
-    //     path: "/admin/pcomp/add",
-    //     name: "pcomp.add",
-    //     type: "nhanvien",
-    //     component: LibraAddPcomp
-    // },
+    {
+        path: "/admin/pcomp/add",
+        name: "pcomp.add",
+        type: "nhanvien",
+        component: LibraAddPcomp
+    },
+    {
+        path: "/admin/pcomp/:id",
+        name: "pcomp.edit",
+        type: "nhanvien",
+        component: LibraEditPcomp
+    },
+        // Loan Book
+    {
+        path: "/admin/muonsach",
+        name: "xlmuonpage",
+        type: "nhanvien",
+        component: LibraXLMuon
+    },
     // LOGIN PAGE
     {
         path: "/login",

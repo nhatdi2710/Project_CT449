@@ -1,6 +1,7 @@
 // const { ApiError } = require("mongodb");
 const ManageBookModel = require("../models/ManageBook.models");
 const ManagePublishCompModel = require("../models/PublishComp.models");
+const ManageUserModel = require("../models/ManageUser.models");
 const MongoDB = require("../utils/mongodb.utils");
 const APIError = require("../config/app-error");
 
@@ -113,8 +114,8 @@ exports.deleteAllBook = async (_req, res, next) => {
 
 // Publishing Company Handler
 exports.createPC = async (req, res, next) => {
-    if (!req.body?.masach) {
-        return next(new APIError(400, "masach can't not empty"));
+    if (!req.body?.manxb) {
+        return next(new APIError(400, "manxb can't not empty"));
     }
 
     try {
@@ -211,3 +212,18 @@ exports.deleteAllPC = async (_req, res, next) => {
 }
 
 // ------------------------------------------------------------------------------------------------------------
+
+// User Management
+exports.showAllUsers = async (req, res, next) => {
+    let documents = [];
+
+    try {
+        const manageUserModel = new ManageUserModel(MongoDB.client);
+
+        documents = await manageUserModel.find({});
+    } catch (error) {
+        return next(new APIError(500, "An error occurred while retrieving books"));
+    }
+
+    return res.send(documents);
+}

@@ -1,78 +1,39 @@
 <template>
     <Form
-    @submit="submitAddBook"
-    :validation-schema="bookFormSchema"
+    @submit="submitPC"
+    :validation-schema="pcFormSchema"
     method="post"
     >
         <div class="form-group">
-            <label for="masach">Mã nhà xuất bản</label>
-            <Field name="masach" type="text" class="form-control" v-model="bookLocal.masach"/>
-            <ErrorMessage name="masach" class="error-feedback" />
+            <label for="manxb">Mã nhà xuất bản</label>
+            <Field name="manxb" type="text" class="form-control" v-model="pcLocal.manxb"/>
+            <ErrorMessage name="manxb" class="error-feedback" />
         </div>
 
         <div class="form-group">
-            <label for="tensach">Tên nhà xuất bản</label>
-            <Field name="tensach" type="text" class="form-control" v-model="bookLocal.tensach"/>
-            <ErrorMessage name="tensach" class="error-feedback" />
+            <label for="tennxb">Tên nhà xuất bản</label>
+            <Field name="tennxb" type="text" class="form-control" v-model="pcLocal.tennxb"/>
+            <ErrorMessage name="tennxb" class="error-feedback" />
         </div>
 
         <div class="form-group">
-            <label for="tacgia">Địa chỉ</label>
+            <label for="diachi">Địa chỉ</label>
             <Field
-            name="tacgia"
+            name="diachi"
             type="text"
             class="form-control"
-            v-model="bookLocal.tacgia"
+            v-model="pcLocal.diachi"
             />
-            <ErrorMessage name="tacgia" class="error-feedback" />
+            <ErrorMessage name="diachi" class="error-feedback" />
         </div>
-
-        <div class="form-group">
-            <label for="dongia">Đơn giá</label>
-            <Field
-            name="dongia"
-            type="number"
-            class="form-control"
-            v-model="bookLocal.dongia"
-            />
-            <ErrorMessage name="dongia" class="error-feedback" />
-        </div>
-
-        <div class="form-group">
-            <label for="soquyen">Số lượng</label>
-            <Field
-            name="soquyen"
-            type="number"
-            class="form-control"
-            v-model="bookLocal.soquyen"
-            />
-            <ErrorMessage name="soquyen" class="error-feedback" />
-        </div>
-
-        <div class="form-group">
-            <label for="namxuatban">Năm xuất bản</label>
-            <Field
-            name="namxuatban"
-            type="number"
-            class="form-control"
-            v-model="bookLocal.namxuatban"
-            />
-            <ErrorMessage name="namxuatban" class="error-feedback" />
-        </div>
-        
-        <!-- <div class="form-group">
-            <label for="manxb">Mã nhà xuất bản</label>
-            <div id="manxb">{{ bookLocal.manxb }}</div>
-            <ErrorMessage name="manxb" class="error-feedback" />
-        </div> -->
         
         <div class="form-group">
             <button type="submit" class="btn btn-primary mt-4">Lưu</button>
             <button
-            v-if="bookLocal._id"
+            v-if="pcLocal._id"
             type="button"
-            class="ml-2 btn btn-danger"
-            @click="deleteBook"
+            class="btn btn-danger mt-4"
+            @click="deletePC"
             >
             Xóa
             </button>
@@ -90,54 +51,38 @@
         Field,
         ErrorMessage,
         },
-        emits: ["submit:book", "delete:book"],
+        emits: ["submit:pc", "delete:pc"],
         props: {
-            book: { type: Object, required: true }
+            pc: { type: Object, required: true }
         },
         data() {
-            const bookFormSchema = yup.object().shape({
-                masach: yup
-                    .string()
-                    .required("Phải có giá trị."),
-                tensach: yup
-                    .string()
-                    .required("Phải có giá trị.")
-                    .min(2, "Phải ít nhất 2 ký tự.")
-                    .max(50, "Tên có nhiều nhất 50 ký tự."),
-                tacgia: yup
-                    .string()
-                    .required("Phải có giá trị.")
-                    .min(2, "Phải ít nhất 2 ký tự.")
-                    .max(50, "Tên có nhiều nhất 50 ký tự."),
-                dongia: yup
-                    .number()
-                    .required("Phải có giá trị.")
-                    .min(0, "Phải lớn hơn 0."),
-                soquyen: yup
-                    .number()
-                    .required("Phải có giá trị.")
-                    .min(0, "Phải lớn hơn 0."),
-                namxuatban: yup
-                    .number()
-                    .required("Phải có giá trị.")
-                    .min(0, "Phải lớn hơn 0."),
+            const pcFormSchema = yup.object().shape({
                 manxb: yup
                     .string()
-                    .default("KD"),
-                
+                    .required("Phải có giá trị."),
+                tennxb: yup
+                    .string()
+                    .required("Phải có giá trị.")
+                    .min(2, "Phải ít nhất 2 ký tự.")
+                    .max(50, "Tên có nhiều nhất 50 ký tự."),
+                diachi: yup
+                    .string()
+                    .required("Phải có giá trị.")
+                    .min(2, "Phải ít nhất 2 ký tự.")
+                    .max(50, "Tên có nhiều nhất 50 ký tự."),
             });
             return {
                 // Chúng ta sẽ không muốn hiệu chỉnh props, nên tạo biến cục bộ
-                bookLocal: this.book,
-                bookFormSchema,
+                pcLocal: this.pc,
+                pcFormSchema,
             };
         },
         methods: {
-            submitAddBook() {
-                this.$emit("submit:book", this.bookLocal);
+            submitPC() {
+                this.$emit("submit:pc", this.pcLocal);
             },
-            deleteBook() {
-                this.$emit("delete:book", this.bookLocal.id);
+            deletePC() {
+                this.$emit("delete:pc", this.pcLocal.id);
             },
         },
     };

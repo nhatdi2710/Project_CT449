@@ -130,7 +130,6 @@
             },
             goToEditBook() {
                 const sachchon = document.querySelector('input[name="sachchon"]:checked');
-
                 this.$router.push({ name: "book.edit", params: { id: sachchon.value } });
             },
         },

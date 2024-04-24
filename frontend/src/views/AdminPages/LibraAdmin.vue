@@ -1,5 +1,6 @@
 <style>
-    .manage-list {
+    .manage-list,
+    .manage-user {
         margin: 48px 0;
     }
 
@@ -46,4 +47,57 @@
             </div>
         </div>
     </div>
+
+    <div class="manage-user">
+        <h2>Danh Sách Độc Giả</h2>
+
+        <UsersTable 
+            v-if="filteredUsersCount > 0"
+            :users="filteredUsers"
+            v-model:activeIndex="activeIndex"
+        />
+    </div>
 </template>
+
+<script>
+    import AdminService from "@/services/admin.service";
+    import UsersTable from "@/components/UsersTable.vue";
+
+    export default {
+        components: {
+            UsersTable
+        },
+        data() {
+            return {
+                users: [],
+                activeIndex: -1,
+                searchText: "",
+            };
+        },
+        computed: {
+            filteredUsers() {
+                return this.users;
+            },
+            filteredUsersCount() {
+                return this.filteredUsers.length;
+            },
+        },
+        methods: {
+            async retrieveUsers() {
+                try {
+                    this.users = await AdminService.getAllUsers();
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+            refreshList() {
+                this.retrieveUsers();
+                this.activeIndex = -1;
+            },
+        },
+        mounted() {
+            this.refreshList();
+        },
+
+    };
+</script>
